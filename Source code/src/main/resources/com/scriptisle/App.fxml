@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scriptisle.Controller">
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Send">
+                    <content>
+                        <AnchorPane>
+                            <children>
+                                <ScrollPane fx:id="ScrollView" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <content>
+                                        <AnchorPane>
+                                            <children>
+                                                <VBox prefHeight="367.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <GridPane fx:id="ipAddressesTable" alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="20.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                                                            </rowConstraints>
+                                                            <VBox.margin>
+                                                                <Insets />
+                                                            </VBox.margin>
+                                                        </GridPane>
+                                          <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="124.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#reloadOtherIp" text="Refresh">
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin></Button>
+                                                        <Label alignment="CENTER" contentDisplay="CENTER" text="File or Folder Path:" textAlignment="CENTER">
+                                                            <VBox.margin>
+                                                                <Insets top="10.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                        <HBox>
+                                                            <children>
+                                                                <TextField fx:id="fileToSendPath" editable="false" HBox.hgrow="ALWAYS" />
+                                                                <Button mnemonicParsing="false" onMouseClicked="#findFileToSend" text="..." />
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets bottom="10.0" top="10.0" />
+                                                            </VBox.margin>
+                                                        </HBox>
+                                                        <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#sendFile" text="Send">
+                                                            <VBox.margin>
+                                                                <Insets bottom="10.0" />
+                                                            </VBox.margin>
+                                                        </Button>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </padding>
+                                        </AnchorPane>
+                                    </content>
+                                </ScrollPane>
+                                <VBox fx:id="progressesFindIpContainer" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <ProgressIndicator fx:id="progressesFindIp" progress="0.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Receive">
+                    <content>
+                        <AnchorPane>
+                            <children>
+                                <VBox prefHeight="367.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label text="Save file in:">
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <HBox>
+                                            <children>
+                                                <TextField fx:id="pathForFile" editable="false" HBox.hgrow="ALWAYS" />
+                                                <Button mnemonicParsing="false" onMouseClicked="#findDirectoryForFile" text="..." />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="settingsTab" text="My IP">
+                    <content>
+                        <AnchorPane>
+                            <children>
+                                <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label text="My IP">
+                                            <font>
+                                                <Font name="System Bold" size="36.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets />
+                                            </VBox.margin>
+                                        </Label>
+                                        <TextField fx:id="myIp" alignment="CENTER" editable="false" maxWidth="250.0" minWidth="250.0" prefWidth="250.0">
+                                            <font>
+                                                <Font size="24.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
